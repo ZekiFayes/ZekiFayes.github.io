@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jingren Xie</title>
+    <title>jingrenxie</title>
     <style>
         /* Global Styles */
         body {
@@ -26,7 +26,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .nav-container {
-            max-width: 800px;
+            max-width: 1000px; /* Widened for two columns */
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -51,33 +51,98 @@
             color: #0056b3;
         }
 
-        /* Main Content Container */
-        .container {
-            max-width: 800px;
+        /* Two-Column Layout */
+        .page-wrapper {
+            max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
+            display: flex;
+            gap: 50px;
+            align-items: flex-start; /* Critical for sticky sidebar */
+        }
+
+        /* Left Sidebar (Photo & Links) */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px; /* Sticks to screen right below the header */
+            text-align: center;
+        }
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #eaeaea;
+        }
+        .sidebar-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+        .sidebar-title {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+        .personal-links {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 0 auto;
+            width: fit-content;
+        }
+        .personal-links li {
+            margin-bottom: 12px;
+        }
+        .personal-links a {
+            color: #444;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        .personal-links a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        /* Simple emoji icons to simulate real icons without needing external libraries */
+        .icon {
+            display: inline-block;
+            width: 20px;
+            margin-right: 8px;
+            text-align: center;
+        }
+
+        /* Right Main Content */
+        .main-content {
+            flex: 1;
         }
         
         /* Section Styling */
         section {
-            padding-top: 80px; /* Offset for the sticky header when scrolling */
-            margin-top: -40px; 
-            margin-bottom: 60px;
+            padding-top: 80px; /* Offset for the sticky header */
+            margin-top: -60px; 
+            margin-bottom: 50px;
         }
         h2 {
             font-size: 1.8em;
             color: #222;
             border-bottom: 2px solid #eaeaea;
             padding-bottom: 10px;
+            margin-top: 0;
             margin-bottom: 25px;
+        }
+        p {
+            margin-bottom: 15px;
         }
 
         /* Publication & Blog Item Styling */
         .item {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         .item-title {
-            font-size: 1.1em;
+            font-size: 1.15em;
             font-weight: 600;
             color: #0056b3;
             margin-bottom: 5px;
@@ -88,8 +153,17 @@
             font-style: italic;
             margin-bottom: 8px;
         }
+        .item-links a {
+            color: #0056b3;
+            margin-right: 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+        .item-links a:hover {
+            text-decoration: underline;
+        }
         
-        /* Specific Blog Box Style */
+        /* Blog Box Style */
         .blog-post {
             background: #ffffff;
             padding: 20px;
@@ -98,22 +172,33 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        /* Profile Image / Bio flexbox */
-        .bio-section {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        .bio-text {
-            flex: 1;
-        }
-        
         footer {
             text-align: center;
             padding: 40px 20px;
             color: #888;
             font-size: 0.9em;
             border-top: 1px solid #eaeaea;
+            margin-top: 40px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .page-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            .main-content {
+                width: 100%;
+            }
+            nav a {
+                margin-left: 15px;
+            }
         }
     </style>
 </head>
@@ -123,7 +208,7 @@
     <header>
         <div class="nav-container">
             <!-- Left Side: Your Name -->
-            <a href="#home" class="name">[Your Name]</a>
+            <a href="#home" class="name">Jingren Xie</a>
             
             <!-- Right Side: Links -->
             <nav>
@@ -134,59 +219,89 @@
         </div>
     </header>
 
-    <div class="container">
+    <!-- Two Column Layout -->
+    <div class="page-wrapper">
         
-        <!-- Home / Bio Section -->
-        <section id="home">
-            <div class="bio-section">
-                <div class="bio-text">
-                    <h2>About Me</h2>
-                    <p>Hello! I am a researcher and developer specializing in [Your Field]. My academic and professional interests revolve around [Topic 1], [Topic 2], and building efficient solutions for complex data problems. Welcome to my personal page.</p>
-                    <p><strong>Email:</strong> <a href="mailto:your.email@example.com" style="color: #0056b3;">your.email@example.com</a></p>
+        <!-- LEFT SIDEBAR: Photo & Personal Links -->
+        <aside class="sidebar">
+            <!-- Put your photo image file in the same folder and change the src below -->
+            <img src="https://github.com/ZekiFayes/ZekiFayes.github.io/blob/main/xjr.jpg" alt="Profile Photo" class="profile-photo">
+            
+            <h1 class="sidebar-name">Jingren Xie</h1>
+            <p class="sidebar-title">Researcher<br>DTU</p>
+            
+            <ul class="personal-links">
+                <li><a href="mailto:jinxi@dtu.dk"><span class="icon">📧</span> Email</a></li>
+                <li><a href="https://scholar.google.com/citations?user=VVtuqyUAAAAJ&hl=en"><span class="icon">🎓</span> Google Scholar</a></li>
+                <li><a href="https://github.com/ZekiFayes"><span class="icon">💻</span> GitHub</a></li>
+                <!-- <li><a href="https://twitter.com/your-handle"><span class="icon">🐦</span> Twitter</a></li>
+                <li><a href="cv.pdf"><span class="icon">📄</span> Curriculum Vitae</a></li> -->
+            </ul>
+        </aside>
+
+        <!-- RIGHT SIDE: Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Home / Bio Section -->
+            <section id="home">
+                <h2>About Me</h2>
+                <p>Hello! I am a researcher and developer specializing in [Your Field]. My academic and professional interests revolve around [Topic 1], [Topic 2], and building efficient solutions for complex data problems.</p>
+                <p>I am currently working in the [Name of Lab/Group] under the supervision of Prof. [Advisor Name]. Prior to this, I completed my undergraduate studies at [Previous University].</p>
+            </section>
+
+            <!-- Publication Section -->
+            <section id="publication">
+                <h2>Publications</h2>
+                
+                <div class="item">
+                    <div class="item-title">Title of Your Most Recent Paper</div>
+                    <div class="item-meta"><strong>[Your Name]</strong>, Co-Author One. — Journal or Conference Name, 2026.</div>
+                    <p>A brief 1-2 sentence abstract summarizing the paper's methodology and findings.</p>
+                    <div class="item-links">
+                        <a href="#">[PDF]</a>
+                        <a href="#">[Code]</a>
+                        <a href="#">[Dataset]</a>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Publication Section -->
-        <section id="publication">
-            <h2>Publications</h2>
-            
-            <div class="item">
-                <div class="item-title">Title of Your Most Recent Paper</div>
-                <div class="item-meta"><strong>[Your Name]</strong>, Co-Author One. — Journal or Conference Name, 2026.</div>
-                <p>A brief 1-2 sentence abstract summarizing the paper's methodology and findings. <a href="#" style="color: #0056b3;">[PDF]</a> <a href="#" style="color: #0056b3;">[Code]</a></p>
-            </div>
+                <div class="item">
+                    <div class="item-title">Title of An Older Paper</div>
+                    <div class="item-meta">Co-Author One, <strong>[Your Name]</strong>. — Journal or Conference Name, 2025.</div>
+                    <p>Summary of this older paper and why the research was impactful.</p>
+                    <div class="item-links">
+                        <a href="#">[PDF]</a>
+                    </div>
+                </div>
+            </section>
 
-            <div class="item">
-                <div class="item-title">Title of An Older Paper</div>
-                <div class="item-meta">Co-Author One, <strong>[Your Name]</strong>. — Journal or Conference Name, 2025.</div>
-                <p>Summary of this older paper and why the research was impactful. <a href="#" style="color: #0056b3;">[PDF]</a></p>
-            </div>
-        </section>
+            <!-- Blog Section -->
+            <section id="blog">
+                <h2>Blog & Notes</h2>
+                
+                <div class="item blog-post">
+                    <div class="item-title">Strategies for Mixed-Resolution Datasets</div>
+                    <div class="item-meta">Posted on June 5, 2026</div>
+                    <p>In our current workflow, we have a low-resolution dataset with labels and a high-resolution without labels. This presents a unique semi-supervised learning challenge. In this post, I discuss the architectural choices we are evaluating to project the low-resolution features into the high-resolution latent space...</p>
+                    <div class="item-links" style="margin-top: 10px;">
+                        <a href="#" style="font-weight: 500;">Read more &rarr;</a>
+                    </div>
+                </div>
 
-        <!-- Blog Section -->
-        <section id="blog">
-            <h2>Blog & Notes</h2>
-            
-            <div class="item blog-post">
-                <div class="item-title">Strategies for Mixed-Resolution Datasets</div>
-                <div class="item-meta">Posted on June 5, 2026</div>
-                <p>In our current workflow, we have a low resolution dataset with labels and a high-resolution without labels. This presents a unique semi-supervised learning challenge. In this post, I discuss the architectural choices we are evaluating to project the low-resolution features into the high-resolution latent space...</p>
-                <a href="#" style="color: #0056b3; font-weight: 500;">Read more &rarr;</a>
-            </div>
+                <div class="item blog-post">
+                    <div class="item-title">Setting up GitHub Pages for Academics</div>
+                    <div class="item-meta">Posted on May 20, 2026</div>
+                    <p>A quick tutorial on how I migrated my academic portfolio to GitHub Pages using a simple HTML and CSS template. No heavy frameworks required!</p>
+                    <div class="item-links" style="margin-top: 10px;">
+                        <a href="#" style="font-weight: 500;">Read more &rarr;</a>
+                    </div>
+                </div>
+            </section>
 
-            <div class="item blog-post">
-                <div class="item-title">Setting up GitHub Pages</div>
-                <div class="item-meta">Posted on May 20, 2026</div>
-                <p>A quick tutorial on how I migrated my academic portfolio to GitHub Pages using a simple HTML and CSS template. No heavy frameworks required!</p>
-                <a href="#" style="color: #0056b3; font-weight: 500;">Read more &rarr;</a>
-            </div>
-        </section>
-
+        </main>
     </div>
 
     <footer>
-        &copy; 2026 [Your Name]. Built with HTML & CSS. Hosted on GitHub Pages.
+        &copy; 2026 jingrenxie. Built with HTML & CSS. Hosted on GitHub Pages.
     </footer>
 
 </body>
