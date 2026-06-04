@@ -3,103 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jingren Xie - Portfolio</title>
+    <title>Jingren Xie</title>
     <style>
-        /* This section controls how the page looks (Colors, Fonts, Spacing) */
+        /* Global Styles */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             color: #333;
-            max-width: 800px; /* Keeps the text from stretching too far */
-            margin: 0 auto; /* Centers the content */
-            padding: 20px;
-            background-color: #f8f9fa; /* Light gray background */
+            line-height: 1.6;
+            background-color: #fafafa;
         }
+
+        /* Top Navigation Bar */
         header {
-            text-align: center;
-            padding: 40px 0 20px 0;
-            border-bottom: 2px solid #eaeaea;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        h1 {
-            margin-bottom: 5px;
-            color: #2c3e50;
-            font-size: 2.5em;
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-container .name {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #222;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        nav a:hover {
+            color: #0056b3;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Section Styling */
+        section {
+            padding-top: 80px; /* Offset for the sticky header when scrolling */
+            margin-top: -40px; 
+            margin-bottom: 60px;
         }
         h2 {
+            font-size: 1.8em;
+            color: #222;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Publication & Blog Item Styling */
+        .item {
+            margin-bottom: 25px;
+        }
+        .item-title {
+            font-size: 1.1em;
+            font-weight: 600;
             color: #0056b3;
-            margin-top: 30px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+            margin-bottom: 5px;
         }
-        .subtitle {
-            color: #6c757d;
-            font-size: 1.2em;
+        .item-meta {
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 8px;
         }
-        section {
-            margin-bottom: 40px;
-        }
-        .project-card {
+        
+        /* Specific Blog Box Style */
+        .blog-post {
             background: #ffffff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 15px;
+            border-left: 4px solid #0056b3;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .project-card h3 {
-            margin-top: 0;
+
+        /* Profile Image / Bio flexbox */
+        .bio-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
-        a {
-            color: #0056b3;
-            text-decoration: none;
+        .bio-text {
+            flex: 1;
         }
-        a:hover {
-            text-decoration: underline;
-        }
+        
         footer {
             text-align: center;
-            margin-top: 50px;
+            padding: 40px 20px;
+            color: #888;
             font-size: 0.9em;
-            color: #6c757d;
+            border-top: 1px solid #eaeaea;
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Navigation -->
     <header>
-        <h1>[Your Name]</h1>
-        <p class="subtitle">Software Engineer | Data Enthusiast | Creator</p>
+        <div class="nav-container">
+            <!-- Left Side: Your Name -->
+            <a href="#home" class="name">[Your Name]</a>
+            
+            <!-- Right Side: Links -->
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#publication">Publication</a>
+                <a href="#blog">Blog</a>
+            </nav>
+        </div>
     </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>Hello! I'm a developer passionate about building clean, efficient, and user-friendly projects. I love learning new technologies, solving complex problems, and turning ideas into reality.</p>
-    </section>
-
-    <section>
-        <h2>My Projects</h2>
+    <div class="container">
         
-        <div class="project-card">
-            <h3><a href="#">Project Title One</a></h3>
-            <p>A brief description of this cool project you built. Explain what technologies you used and the problem it solves.</p>
-        </div>
+        <!-- Home / Bio Section -->
+        <section id="home">
+            <div class="bio-section">
+                <div class="bio-text">
+                    <h2>About Me</h2>
+                    <p>Hello! I am a researcher and developer specializing in [Your Field]. My academic and professional interests revolve around [Topic 1], [Topic 2], and building efficient solutions for complex data problems. Welcome to my personal page.</p>
+                    <p><strong>Email:</strong> <a href="mailto:your.email@example.com" style="color: #0056b3;">your.email@example.com</a></p>
+                </div>
+            </div>
+        </section>
 
-        <div class="project-card">
-            <h3><a href="#">Project Title Two</a></h3>
-            <p>Another description for your second project. Keep it concise and highlight the impact or what you learned.</p>
-        </div>
-    </section>
+        <!-- Publication Section -->
+        <section id="publication">
+            <h2>Publications</h2>
+            
+            <div class="item">
+                <div class="item-title">Title of Your Most Recent Paper</div>
+                <div class="item-meta"><strong>[Your Name]</strong>, Co-Author One. — Journal or Conference Name, 2026.</div>
+                <p>A brief 1-2 sentence abstract summarizing the paper's methodology and findings. <a href="#" style="color: #0056b3;">[PDF]</a> <a href="#" style="color: #0056b3;">[Code]</a></p>
+            </div>
 
-    <section>
-        <h2>Connect With Me</h2>
-        <ul>
-            <li><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/your-username">github.com/your-username</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/your-profile">linkedin.com/in/your-profile</a></li>
-        </ul>
-    </section>
+            <div class="item">
+                <div class="item-title">Title of An Older Paper</div>
+                <div class="item-meta">Co-Author One, <strong>[Your Name]</strong>. — Journal or Conference Name, 2025.</div>
+                <p>Summary of this older paper and why the research was impactful. <a href="#" style="color: #0056b3;">[PDF]</a></p>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <h2>Blog & Notes</h2>
+            
+            <div class="item blog-post">
+                <div class="item-title">Strategies for Mixed-Resolution Datasets</div>
+                <div class="item-meta">Posted on June 5, 2026</div>
+                <p>In our current workflow, we have a low resolution dataset with labels and a high-resolution without labels. This presents a unique semi-supervised learning challenge. In this post, I discuss the architectural choices we are evaluating to project the low-resolution features into the high-resolution latent space...</p>
+                <a href="#" style="color: #0056b3; font-weight: 500;">Read more &rarr;</a>
+            </div>
+
+            <div class="item blog-post">
+                <div class="item-title">Setting up GitHub Pages</div>
+                <div class="item-meta">Posted on May 20, 2026</div>
+                <p>A quick tutorial on how I migrated my academic portfolio to GitHub Pages using a simple HTML and CSS template. No heavy frameworks required!</p>
+                <a href="#" style="color: #0056b3; font-weight: 500;">Read more &rarr;</a>
+            </div>
+        </section>
+
+    </div>
 
     <footer>
-        <p>&copy; 2026 [Your Name]. Hosted on GitHub Pages.</p>
+        &copy; 2026 [Your Name]. Built with HTML & CSS. Hosted on GitHub Pages.
     </footer>
 
 </body>
