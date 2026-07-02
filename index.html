@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jingrenxie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fafafa;
+        }
+
+        /* Top Navigation Bar */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .nav-container {
+            max-width: 1000px; /* Widened for two columns */
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-container .name {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #222;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        nav a:hover {
+            color: #0056b3;
+        }
+
+        /* Two-Column Layout */
+        .page-wrapper {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+            align-items: flex-start; /* Critical for sticky sidebar */
+        }
+
+        /* Left Sidebar (Photo & Links) */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px; /* Sticks to screen right below the header */
+            text-align: center;
+        }
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #eaeaea;
+        }
+        .sidebar-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+        .sidebar-title {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+        .personal-links {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 0 auto;
+            width: fit-content;
+        }
+        .personal-links li {
+            margin-bottom: 12px;
+        }
+        .personal-links a {
+            color: #444;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        .personal-links a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        /* Simple emoji icons to simulate real icons without needing external libraries */
+        .icon {
+            display: inline-block;
+            width: 20px;
+            margin-right: 8px;
+            text-align: center;
+        }
+
+        /* Right Main Content */
+        .main-content {
+            flex: 1;
+        }
+        
+        /* Section Styling */
+        section {
+            padding-top: 80px; /* Offset for the sticky header */
+            margin-top: -60px; 
+            margin-bottom: 50px;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #222;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Publication & Blog Item Styling */
+        .item {
+            margin-bottom: 30px;
+        }
+        .item-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #0056b3;
+            margin-bottom: 5px;
+        }
+        .item-meta {
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .item-links a {
+            color: #0056b3;
+            margin-right: 15px;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+        .item-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Blog Box Style */
+        .blog-post {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0056b3;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            font-size: 0.9em;
+            border-top: 1px solid #eaeaea;
+            margin-top: 40px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .page-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            .main-content {
+                width: 100%;
+            }
+            nav a {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <header>
+        <div class="nav-container">
+            <!-- Left Side: Your Name -->
+            <a href="#home" class="name">Jingren Xie</a>
+            
+            <!-- Right Side: Links -->
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#publication">Publication</a>
+                <a href="#blog">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Two Column Layout -->
+    <div class="page-wrapper">
+        
+        <!-- LEFT SIDEBAR: Photo & Personal Links -->
+        <aside class="sidebar">
+            <!-- Put your photo image file in the same folder and change the src below -->
+            <img src="./images/me_at_the_beach_quarter.jpg" alt="Profile Photo" class="profile-photo">
+            
+            <h1 class="sidebar-name">Jingren Xie</h1>
+            <p class="sidebar-title">Machine Learning Researcher<br>@ Technical University of Denmark</p>
+            
+            <ul class="personal-links">
+                <li><a href="mailto:jinxi@dtu.dk"><i class="fas fa-envelope fa-fw"></i> Email</a></li>
+                <li><a href="https://scholar.google.com/citations?user=VVtuqyUAAAAJ&hl=en"><i class="fas fa-graduation-cap fa-fw"></i> Google Scholar</a></li>
+                <li><a href="https://github.com/ZekiFayes"><i class="fab fa-github fa-fw"></i> GitHub</a></li>
+                <!-- <li><a href="https://twitter.com/your-handle"><span class="icon">🐦</span> Twitter</a></li>
+                <li><a href="cv.pdf"><span class="icon">📄</span> Curriculum Vitae</a></li> -->
+            </ul>
+        </aside>
+
+        <!-- RIGHT SIDE: Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Home / Bio Section -->
+            <section id="home">
+                <h2>About Me</h2>
+                <p>
+                    I currently leverage Flow Matching for scientific discovery and image generation. 
+                    My prior work bridged mathematical modeling and machine learning to predict complex physical behaviors based on high-dimensional PDEs.
+                </p>
+            </section>
+
+            <!-- Publication Section -->
+            <section id="publication">
+                <h2>Publications</h2>
+                
+                <div class="item">
+                    <div class="item-title">Physics-Informed Modeling for Wood Thermal Analysis and Prediction</div>
+                    <div class="item-meta"><strong>Jingren Xie</strong>, Alex John Buckthal, Ryan Anthony O'Connor, Isak Worre Foged, Dim P. Papadopoulos, 2026.</div>
+                    <!-- <p>A brief 1-2 sentence abstract summarizing the paper's methodology and findings.</p> -->
+                    <div class="item-links">
+                        <a href="https://arxiv.org/abs/2606.23402">[PDF]</a>
+                        <!-- <a href="#">[Code]</a>
+                        <a href="#">[Dataset]</a> -->
+                    </div>
+                </div>
+
+                <!-- <div class="item">
+                    <div class="item-title">Title of An Older Paper</div>
+                    <div class="item-meta">Co-Author One, <strong>[Your Name]</strong>. — Journal or Conference Name, 2025.</div>
+                    <p>Summary of this older paper and why the research was impactful.</p>
+                    <div class="item-links">
+                        <a href="#">[PDF]</a>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- Blog Section -->
+            <section id="blog">
+                <h2>Blog</h2>
+                
+                <div class="item blog-post">
+                    <div class="item-title">Flow Matching for Thermal-Driven Wood Design</div>
+                    <div class="item-meta">Posted on July, 2026</div>
+                    <p>
+                        In computational materials science, the ultimate objective of material engineering is the reverse: discovering a structure that yields expected physical properties, i.e., inverse material design. 
+                        In the context of bio-inspired materials like wood, current research has explored propositional design processes on two-dimensional surfaces with mono-modal thermal properties and has gained more foundational knowledge of wood thermal behavior. 
+                        To advance this design process further, we tackle this inverse wood design challenge by reversing the conventional structure-property-behavior pipeline, i.e., thermal-driven wood design, which translates wood thermal behavior to its structure. 
+                        Specifically, our motivation is to map a targeted two-dimensional spatial thermal response directly back to its structural representation, generating a high-fidelity wood design...
+                    </p>
+                    <div class="item-links" style="margin-top: 10px;">
+                        <a href="https://zekifayes.github.io/fmwd/" style="font-weight: 500;">Read more &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="item blog-post">
+                    <div class="item-title">Synthesizing High-Resolution Wood Thermal Responses from Optical Imagery</div>
+                    <div class="item-meta">Posted on July, 2026</div>
+                    <p>
+                        The thermal behavior of wood is a critical factor in advanced material assembly. However, pixel-level thermal analysis remains fundamentally constrained by the low resolution and noise inherent to infrared thermography. To address this, we introduce an end-to-end computational framework that synthesizes high-resolution thermal responses directly from standard RGB images...
+                    </p>
+                    <div class="item-links" style="margin-top: 10px;">
+                        <a href="https://zekifayes.github.io/seeheat/" style="font-weight: 500;">Read more &rarr;</a>
+                    </div>
+                </div>
+   
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 jingrenxie. Built with HTML & CSS. Hosted on GitHub Pages.
+    </footer>
+
+</body>
+</html>
